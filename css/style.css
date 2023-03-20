@@ -204,17 +204,9 @@ section{
 span{
 	color: var(--main-color);
 }
-.style-resize > li::before {
-    content: '';
-    display: inline-block;
-    height: 25px;
+.style-resize img{
+	height: 25px;
     width: 25px;
-    background-size: cover;
-    background-image: url('/img/crochet.png');
-    background-repeat: no-repeat;
-    margin-right: 10px;
-    background-position: center center;
-    vertical-align: middle;
 }
 .home-text li{
 	list-style-type: none;
