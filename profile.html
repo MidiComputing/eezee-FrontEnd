@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr-BE">
+<head>
+	<meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Profile - Nos business solutions | Eezee-It | Odoo Gold Partner</title>
+	<!-- Importer Fichier CSS -->
+	<link rel="stylesheet" type="text/css" href="css/profile.css">
+	<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">	<!-- Import Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<!--------------------------- Section Header ---------------------------->
+	<header>
+        <a accesskey="r" href="index.html" class="back-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
+        <a accesskey="i" href="index.html" class="logo"><img src="img/logo.png" alt="Logo-Eezee-It"></a>
+		<a accesskey="l" href="#" class="lang-btn">English</a>
+	</header>
+
+	<!--------------------------- Section de Profil ---------------------------->
+	<section class="profile" id="profile">
+
+        <div class="container-profile">
+            <div class="card-profile">
+                <form id="demand-form" onsubmit="return confirm('Êtes-vous sûr d\'ajouter ces données?')">
+                    <div class="first-party">
+                        <h2>Création du profile</h2>
+                        <p>Pour finaliser votre profil, veuillez répondre aux questions ci-dessous.</p>
+                        <span>Quel est votre statut ?</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="statut" id="statut" value="Particulier">
+                            <label class="form-check-label" for="statut_id">
+                                Particulier
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="statut" id="statut" value="Entreprise" checked>
+                            <label class="form-check-label" for="flexRadioCheckedDisabled">
+                                Entreprise
+                            </label>
+                        </div>
+                    </div>
+                    <div class="second-party">
+                        <label for="">Nom de l’entreprise</label>
+                        <input type="text" name="nom_entreprise" id="nom_entreprise" class="form-control" require>
+                        <label for="">Numéro d’entreprise du Québec</label>
+                        <input type="text" name="num_entreprise" id="num_entreprise" class="form-control" require>
+                        <label for="">Numéro de TVQ</label>
+                        <input type="text" name="num_tvq" id="num_tvq" class="form-control" require>
+                    </div>
+
+                    <div class="third-party">
+                        <span>L’entreprise a-t-elle un numéro de RBQ ?</span><br>
+                        <div class="form-check">
+                            <input class="form-check-input" onchange="hideMsgRBQ(this)" type="radio" name="flexRadioDisabled1" id="flexRadioDisabled1" checked>
+                            <label class="form-check-label" for="flexRadioDisabled1">
+                                Oui
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" onchange="hideFormRBQ(this)" type="radio" name="flexRadioDisabled1" id="flexRadioCheckedDisabled2">
+                            <label class="form-check-label" for="flexRadioCheckedDisabled2">
+                                Non
+                            </label>
+                        </div>
+                        
+                        <div class="adress">
+                            <div id="divRBQ">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label for="">Numéro de RBQ</label>
+                                        <input type="text" name="num_rbq" id="num_rbq" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <label for="">Type</label>
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="" disabled selected>Choisir..</option>
+                                            <option value="bureau">Bureau</option>
+                                            <option value="autre">autre</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label for="">N° de téléphone principal</label>
+                                        <input type="text" name="num_tel" id="num_tel" class="form-control">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="">Poste</label>
+                                        <input type="text" name="poste" id="poste" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="divMsg" style="position: relative; top: -130px; visibility: hidden;">
+                                Auncun numéro de RBQ
+                            </div>
+
+                            <div class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="" name="conditions" id="conditions" required>
+                                <label class="form-check-label" for="conditions">
+                                    J’accepte les <a href="#open-modal">termes et conditions</a>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="oui" name="consentement" id="consentement">
+                                <label class="form-check-label" for="consentement">
+                                    Exemple de consentement
+                                </label>
+                            </div>
+
+                            <button type="submit" accesskey="s">Compléter mon profil</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="response">
+                    <pre></pre>
+                </div>
+			</div>
+        </div>
+	
+        <!--------------------------- Modal(Termes & Conditions) ---------------------------->
+        <div id="open-modal" class="modal-window">
+            <div>
+                <a href="#" title="Close" class="modal-close">Fermer</a>
+                <h1>Termes et conditions</h1>
+                <div>Eezee-it booste votre transformation digitale.</div>
+                <br>
+                <p>Nous repensons les business models pour une meilleure adaptation à cette nouvelle ère digitale et pour faire de votre site 
+                    web une nouvelle source de revenus et de productivité. Nous mettons en place des applications de pointe (ODOO) afin 
+                    d'offrir une expérience intégrée à vos clients, depuis le web jusqu'à la facture.</p>
+                <div><small>Voir Détails 👇</small></div>
+                <a href="https://eezee-it.com/fr_BE/aboutus" accesskey="l" target="_blank">
+                    Eezee-It S.A.
+            </div>
+        </div>
+
+	</section>
+
+</body>
+
+<!--------------------------- Visibilité de partie RBQ ---------------------------->
+<script>
+    function hideFormRBQ(x) {
+        if (x.checked) {
+            document.getElementById("divRBQ").style.visibility = "hidden";
+            document.getElementById("divMsg").style.visibility = "visible";
+        }
+    }
+
+    function hideMsgRBQ(x) {
+        if (x.checked) {
+            document.getElementById("divMsg").style.visibility = "hidden";
+            document.getElementById("divRBQ").style.visibility = "visible";
+        }
+    }
+</script>
+<!--------------------------- Importer libs Ajax ---------------------------->
+<script>
+    (function($){
+        function processForm(e){
+
+        var statut         = $("input[name='statut']:checked").val();
+        var nom_entreprise = $('#nom_entreprise').val();
+        var num_entreprise = $('#num_entreprise').val();
+        var num_tvq        = $('#num_tvq').val();
+        var num_rbq        = $('#num_rbq').val();
+        var type           = $('#type').val();
+        var num_tel        = $('#num_tel').val();
+        var poste          = $('#poste').val();
+        var consentement   = $("input[name='consentement']:checked").val();
+        if (consentement == 'oui') {
+            consentement ='oui';
+        } else {
+            consentement = 'non';
+        }
+        
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/postProfile/',
+            dataType: 'json',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify({ 
+                "statut": statut, 
+                "nom_entreprise": nom_entreprise, 
+                "num_entreprise": num_entreprise, 
+                "num_tvq": num_tvq ,
+                "num_rbq": num_rbq,
+                "type": type,
+                "num_tel": num_tel,
+                "poste": poste,
+                "consentement": consentement
+                }), 
+            processData: false,
+            success: function( data, textStatus, jQxhr ){
+                $('#response pre').html( JSON.stringify( data ) );
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
+        }
+
+        $('#demand-form').submit( processForm );
+    })(jQuery);
+</script>
+</html>
